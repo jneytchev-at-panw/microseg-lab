@@ -25,7 +25,7 @@ To get started, you will need:
 * Edit all 3 variables in `variables.tf` to match your prefered zone, your email address, and a prefix for all resource names. For example:
 ```
 variable "owner" {
-  default = "jdoe@paloaltonetworks.com"
+  default = "jdoe@myworkemailhere.com"
 }
 
 variable "prefix" {

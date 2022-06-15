@@ -1,5 +1,5 @@
 variable "owner" {
-  default = "jdoe@paloaltonetworks.com"
+  default = "jdoe@myworkemailhere.com"
 }
 
 variable "prefix" {
