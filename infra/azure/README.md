@@ -9,6 +9,8 @@ This collection of terraform files creates infrastructure that can be used to de
 * Bastion host
 * Virtual scale set of 3 VMs with private IPs accessible via the bastion host
 
+![Azure infrastructure diagram](azure-infra.png)
+
 To get started, you will need:
 
 * Linux / Mac / WSL2 with existing ssh public/private key pair in `~/.ssh`
