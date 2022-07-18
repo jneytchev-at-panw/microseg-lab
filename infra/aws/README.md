@@ -58,8 +58,8 @@ You will get all of your demo VMs in a private natted subnet. To access them thr
 ```
 eval $(ssh-agent)
 ssh-add ~/.ssh/id_rsa
-bastion_ip=$(terraform output bastion_ip)
-demo_vm_ips=$(terraform output demo_vm_ips)
+bastion_ip=$(terraform output -raw bastion_ip)
+demo_vm_ips=$(terraform output -raw demo_vm_ips)
 echo $demo_vm_ips
 ssh -A ec2-user@${bastion_ip}
 ```
