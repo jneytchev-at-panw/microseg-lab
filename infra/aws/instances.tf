@@ -8,7 +8,7 @@ resource "aws_instance" "bst1" {
   associate_public_ip_address = true
 
   tags = {
-    name = "${var.prefix}-bst1"
+    Name = "${var.prefix}-bst1"
     role = "Bastion"
   }
 }
@@ -32,7 +32,7 @@ fi
   EOT
 
   tags = {
-    name = "${var.prefix}-nat1"
+    Name = "${var.prefix}-nat1"
     role = "NAT"
   }
 }
@@ -43,7 +43,7 @@ resource "aws_network_interface" "nat1-eni1" {
   security_groups = [aws_security_group.default.id]
 
   tags = {
-    name = "${var.prefix}-nat1-eni1"
+    Name = "${var.prefix}-nat1-eni1"
   }
 }
 
@@ -54,7 +54,7 @@ resource "aws_eip" "eip1" {
   depends_on = [aws_internet_gateway.igw1]
 
   tags = {
-    name = "${var.prefix}-eip1"
+    Name = "${var.prefix}-eip1"
   }
 }
 
@@ -62,14 +62,14 @@ resource "aws_eip" "eip1" {
 resource "aws_instance" "vms1" {
   count = 3
   ami = "${data.aws_ami.amazon-linux-2.id}"
-  instance_type = "t2.micro"
+  instance_type = "t2.medium"
   key_name = "${var.prefix}-ssh1"
   vpc_security_group_ids = [aws_security_group.default.id]
   subnet_id = aws_subnet.sn2.id
   associate_public_ip_address = false
 
   tags = {
-    name = "${var.prefix}-vm${count.index}"
+    Name = "${var.prefix}-vm${count.index}"
   }
 }
 

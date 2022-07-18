@@ -17,7 +17,7 @@ resource "aws_security_group" "bst-sg1" {
   }
 
   tags = {
-    name = "${var.prefix}-bst-sg1"
+    Name = "${var.prefix}-bst-sg1"
   }
 }
 
@@ -44,6 +44,6 @@ resource "aws_security_group" "default" {
   }
 
   tags = {
-    name = "${var.prefix}-default-sg1"
+    Name = "${var.prefix}-default-sg1"
   }
 }

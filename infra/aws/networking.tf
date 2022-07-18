@@ -3,7 +3,7 @@ resource "aws_vpc" "vpc1" {
   cidr_block = "10.10.0.0/16"
 
   tags = {
-    name = "${var.prefix}-vpc1"
+    Name = "${var.prefix}-vpc1"
   }
 }
 
@@ -13,7 +13,7 @@ resource "aws_subnet" "sn1" {
   cidr_block = "10.10.0.0/20"
 
   tags = {
-    name = "${var.prefix}-sn1"
+    Name = "${var.prefix}-sn1"
     type = "Public"
   }
 }
@@ -24,7 +24,7 @@ resource "aws_subnet" "sn2" {
   cidr_block = "10.10.16.0/20"
 
   tags = {
-    name = "${var.prefix}-sn2"
+    Name = "${var.prefix}-sn2"
     type = "Private, natted"
   }
 }
@@ -39,7 +39,7 @@ resource "aws_route_table" "rtb1" {
   }
 
   tags = {
-    name = "${var.prefix}-rtb1"
+    Name = "${var.prefix}-rtb1"
   }
 }
 
@@ -53,7 +53,7 @@ resource "aws_internet_gateway" "igw1" {
   vpc_id = aws_vpc.vpc1.id
 
   tags = {
-    name = "${var.prefix}-igw1"
+    Name = "${var.prefix}-igw1"
   }
 }
 
@@ -65,7 +65,7 @@ resource "aws_route_table" "rtb2" {
     network_interface_id = aws_network_interface.nat1-eni1.id
   }
   tags = {
-    name = "${var.prefix}-rtb2"
+    Name = "${var.prefix}-rtb2"
   }
 }
 

@@ -10,5 +10,5 @@ output "nat_ip" {
 
 output "demo_vm_ips" {
     description = "Private IP addresses of all demo VMs."
-    value = join(",", aws_instance.vms1[*].private_ip)
+    value = join(" ", aws_instance.vms1[*].private_ip)
 }
