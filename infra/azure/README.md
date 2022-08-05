@@ -19,7 +19,7 @@ To get started, you will need:
     * [authenticate](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli)
 * Terraform
     * [configure](https://learn.hashicorp.com/tutorials/terraform/azure-build) Make sure to create a Service Principal and export the `ARM_*` variables as described in the guide.
-* (Optional) jq
+* (Optional) jq, azure cli SSH extension
 
 ### Getting started
 
