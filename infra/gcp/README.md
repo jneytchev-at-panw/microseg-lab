@@ -8,12 +8,6 @@ This collection of terraform files creates infrastructure that can be used to de
 
 This code creates a VPC network with 2 subnets. All VMs in those subnets will use private IPs only, outbound traffic is handled by a cloud NAT instance. 
 
-Connectivity to the VMs is provided via the identity aware proxy in GCP. To SSH into any of them, use the following command:
-
-```
-gcloud compute ssh --zone $your-zone $your-vm-name  --tunnel-through-iap --project $your-project
-```
-
 There are 2 firewall rules created:
 * Allowing SSH from the identity aware proxy to the VMs.
 * Allowing all traffic within the subnets.
@@ -61,6 +55,12 @@ Then it is as easy as
 terraform init
 terraform plan
 terraform apply
+```
+
+Connectivity to the VMs is provided via the identity aware proxy in GCP. To view the commands to connect to each vm via SSH, run the following script:
+
+```
+./get_connect_iap.sh
 ```
 
 Once done with your lab environment, take it down with `terraform destroy`.
