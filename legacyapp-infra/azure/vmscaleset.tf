@@ -40,4 +40,5 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
   tags = {
     owner = var.owner
   }
+  encryption_at_host_enabled = true
 }
