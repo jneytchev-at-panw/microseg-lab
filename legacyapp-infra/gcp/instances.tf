@@ -26,6 +26,9 @@ resource "google_compute_instance" "vm1" {
     email  = var.shared_svc_account_email
     scopes = ["cloud-platform"]
   }
+  metadata = {
+    block-project-ssh-keys = true
+  }
 }
 
 resource "google_compute_instance" "vm2" {
@@ -56,6 +59,9 @@ resource "google_compute_instance" "vm2" {
     email  = var.shared_svc_account_email
     scopes = ["cloud-platform"]
   }
+  metadata = {
+    block-project-ssh-keys = true
+  }
 }
 
 resource "google_compute_instance" "vm3" {
@@ -85,5 +91,8 @@ resource "google_compute_instance" "vm3" {
   service_account {
     email  = var.shared_svc_account_email
     scopes = ["cloud-platform"]
+  }
+  metadata = {
+    block-project-ssh-keys = true
   }
 }
