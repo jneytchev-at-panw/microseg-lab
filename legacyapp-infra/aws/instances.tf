@@ -11,6 +11,8 @@ resource "aws_instance" "bst1" {
     Name = "${var.prefix}-bst1"
     role = "Bastion"
   }
+  ebs_optimized = true
+  monitoring = true
 }
 
 # NAT instance for the private subnet
@@ -35,6 +37,8 @@ fi
     Name = "${var.prefix}-nat1"
     role = "NAT"
   }
+  ebs_optimized = true
+  monitoring = true
 }
 
 resource "aws_network_interface" "nat1-eni1" {
@@ -71,6 +75,8 @@ resource "aws_instance" "vms1" {
   tags = {
     Name = "${var.prefix}-vm${count.index}"
   }
+  ebs_optimized = true
+  monitoring = true
 }
 
 # Lookup of the latest Amazon linux AMI
