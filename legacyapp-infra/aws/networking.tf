@@ -73,3 +73,5 @@ resource "aws_route_table_association" "rtb2as" {
   subnet_id      = aws_subnet.sn2.id
   route_table_id = aws_route_table.rtb2.id
 }
+
+

@@ -1,7 +1,7 @@
 # Bastion host, public IP
 resource "aws_instance" "bst1" {
   ami = "${data.aws_ami.amazon-linux-2.id}"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   key_name = "${var.prefix}-ssh1"
   vpc_security_group_ids = [aws_security_group.bst-sg1.id,aws_security_group.default.id]
   subnet_id = aws_subnet.sn1.id
@@ -13,12 +13,18 @@ resource "aws_instance" "bst1" {
   }
   ebs_optimized = true
   monitoring = true
+  metadata_options {
+    http_tokens = "required"
+  }
+  root_block_device {
+    encrypted = true
+  }
 }
 
 # NAT instance for the private subnet
 resource "aws_instance" "nat1" {
   ami = "${data.aws_ami.amazon-linux-2.id}"
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   key_name = "${var.prefix}-ssh1"
 
   network_interface {
@@ -39,6 +45,12 @@ fi
   }
   ebs_optimized = true
   monitoring = true
+  metadata_options {
+    http_tokens = "required"
+  }
+  root_block_device {
+    encrypted = true
+  }
 }
 
 resource "aws_network_interface" "nat1-eni1" {
@@ -66,7 +78,7 @@ resource "aws_eip" "eip1" {
 resource "aws_instance" "vms1" {
   count = 3
   ami = "${data.aws_ami.amazon-linux-2.id}"
-  instance_type = "t2.medium"
+  instance_type = "t3.medium"
   key_name = "${var.prefix}-ssh1"
   vpc_security_group_ids = [aws_security_group.default.id]
   subnet_id = aws_subnet.sn2.id
@@ -77,6 +89,12 @@ resource "aws_instance" "vms1" {
   }
   ebs_optimized = true
   monitoring = true
+  metadata_options {
+    http_tokens = "required"
+  }
+  root_block_device {
+    encrypted = true
+  }
 }
 
 # Lookup of the latest Amazon linux AMI

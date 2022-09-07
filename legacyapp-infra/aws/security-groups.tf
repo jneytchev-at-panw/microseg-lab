@@ -8,12 +8,14 @@ resource "aws_security_group" "bst-sg1" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = [var.my_cidr]
+    description = "Allow SSH from the user"
   }
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+    description = "Allow bastion to connect to the internet"
   }
 
   tags = {
@@ -33,6 +35,7 @@ resource "aws_security_group" "default" {
     protocol  = -1
     cidr_blocks = [aws_vpc.vpc1.cidr_block]
     self      = true
+    description = "Allow all ingress from within the VPC"
   }
 
   egress {
@@ -41,6 +44,7 @@ resource "aws_security_group" "default" {
     protocol  = -1
     cidr_blocks = ["0.0.0.0/0"]
     self      = true
+    description = "Allow VMs to connect to the internet"
   }
 
   tags = {
